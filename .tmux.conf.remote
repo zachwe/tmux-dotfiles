@@ -1,11 +1,17 @@
+# set prefix to C-n instead of default C-b
 unbind C-b
 set -g prefix C-n
 bind C-n send-prefix
-set -g status-bg colour5
+
+# set status bar to red
+set -g status-bg red
+
 setw -g mode-keys vi
 set -g status-keys vi
 bind-key -t vi-edit Up history-up
 bind-key -t vi-edit Down history-down
+
+# Copy paste, with vim-like commands.
 unbind p
 bind p paste-buffer
 bind -t vi-copy v begin-selection
@@ -21,3 +27,6 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 bind r source-file ~/.tmux.conf \; display-message "Config reloaded."
+
+# Long terminal storage
+set -g history-limit 10000
